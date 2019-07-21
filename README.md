@@ -4,10 +4,9 @@
 This project is to use Jasmine to write effective tests against a web-based application that reads RSS feeds.
 The project requires analyzing multiple aspects of an application including the HTML, CSS and JavaScript.
 
-## Requirements
-The required tests for the project (including RSS Feed testing, RSS Feed properties, menu default state, and menu hiding/showing) are comprehensive enough to adequately test the functionality of the app. Tests should be independent of one another.
-
 ## Test content
+The required tests for the project (including RSS Feed testing, RSS Feed properties, menu default state, and menu hiding/showing) are comprehensive enough to adequately test the functionality of the app. Tests are independent of one another.
+
 ###Test Suite "RSS Feeds"
 -A test makes sure that the allFeeds variable has been defined and that it is not empty.
 -A test loops through each feed in the allFeeds object and ensures it has a URL defined and that the URL is not empty.
