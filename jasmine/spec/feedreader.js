@@ -12,7 +12,7 @@ $(function() {
     
     /* Test suite "RSS Feeds" */
     describe('RSS Feeds', function() {
-        /* This tests to make sure that the allFeeds variable has been defined
+        /* This test makes sure that the allFeeds variable has been defined
          * and that it is not empty. 
          */
         it('are defined', function() {
@@ -45,39 +45,38 @@ $(function() {
 
     /* Test suite "The menu" */
     describe('The menu', function(){
-        // A test that ensures the menu element is hidden by default. 
+        // This test ensures the menu element is hidden by default. 
         it('menu is hidden by default', function(){
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
-        // A test that ensures the menu changes visibility when the menu icon is clicked
+        // This test ensures the menu changes visibility when the menu icon is clicked
         it('menu displays when clicked', function(){
+
             //expectation: the menu displays when clicked
             $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(false);
+
             //expectation: the menu is hidden when clicked again
             $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
-
     });
 
 
     /* Test suite named "Initial Entries" */
     describe('Initial Entries', function(){
+        // Because loadFeed() is asynchronous, this test uses Jasmine's beforeEach and asynchronous done() function.
+        beforeEach(function(done){
+            loadFeed(0, done);
+        });
 
-        /* A test that ensures when the loadFeed function is called and completes its work,
+        /* This test ensures when the loadFeed function is called and completes its work,
          * there is at least a single .entry element within the .feed container.
          */
-
-            // Because loadFeed() is asynchronous, this test uses Jasmine's beforeEach and asynchronous done() function.
-            beforeEach(function(done){
-                loadFeed(0, done);
-            });
-
-            it('there is at least a single entry when loadFeed is called and done', function(){
-                expect($('.feed .entry').length).toBeGreaterThan(0);
-            });
+        it('there is at least a single entry when loadFeed is called and done', function(){
+            expect($('.feed .entry').length).toBeGreaterThan(0);
+        });
     }); 
 
 
@@ -99,8 +98,8 @@ $(function() {
             })
         });
 
-        /* A test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
+        /* This test ensures that the content actually changes
+         * when a new feed is loaded by the loadFeed function.
          */
         it('content changes when a new feed is loaded', function(){
             expect(feedOne === feedTwo).toBe(false);
