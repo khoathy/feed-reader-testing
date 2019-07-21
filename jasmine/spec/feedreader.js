@@ -1,7 +1,7 @@
 /* feedreader.js
  *
  * This is the spec file that Jasmine will read and contains
- * all of the tests that will be run against your application.
+ * all of the tests that will be run against the application.
  */
 
 /* We're placing all of our tests within the $() function,
@@ -19,7 +19,6 @@ $(function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
-
 
         /* This test loops through each feed in the allFeeds object and 
          * ensures it has a URL defined and that the URL is not empty.
@@ -76,18 +75,35 @@ $(function() {
                 loadFeed(0, done);
             });
 
-            it ('there is at least a single entry when loadFeed is called and done', function(){
+            it('there is at least a single entry when loadFeed is called and done', function(){
                 expect($('.feed .entry').length).toBeGreaterThan(0);
             });
     }); 
 
+
+    /*Test suite named "New Feed Selection" */
     describe('New Feed Selection', function(){
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+        let feedOne, 
+            feedTwo;
+        
+        // new feeds loaded
+        beforeEach(function(done){
+            loadFeed(0,function(){
+                feedOne = $('.feed').html();
+                done();
+            })
+            loadFeed(1,function(){
+                feedTwo = $('.feed').html();
+                done();
+            })
+        });
 
-        /* TODO: Write a test that ensures when a new feed is loaded
+        /* A test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
          */
+        it('content changes when a new feed is loaded', function(){
+            expect(feedOne === feedTwo).toBe(false);
+        });
     }); 
 }());
