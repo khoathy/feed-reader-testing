@@ -90,12 +90,11 @@ $(function() {
         beforeEach(function(done){
             loadFeed(0,function(){
                 feedOne = $('.feed').html();
-                done();
-            })
-            loadFeed(1,function(){
-                feedTwo = $('.feed').html();
-                done();
-            })
+                loadFeed(1,function(){
+                    feedTwo = $('.feed').html();
+                    done();
+                });
+            });
         });
 
         /* This test ensures that the content actually changes
